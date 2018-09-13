@@ -1,0 +1,72 @@
+BR[mce_bogus] {
+	DISPLAY: none
+}
+#mscTooltip {
+	Z-INDEX: 20; BORDER-BOTTOM: #ffffff 2px solid; POSITION: absolute; BORDER-LEFT: #ffffff 2px solid; PADDING-BOTTOM: 3px; PADDING-LEFT: 3px; WIDTH: 250px; PADDING-RIGHT: 3px; DISPLAY: none; BACKGROUND: #e6ecfb; BORDER-TOP: #ffffff 2px solid; BORDER-RIGHT: #ffffff 2px solid; PADDING-TOP: 3px
+}
+#mscTooltip DIV {
+	Z-INDEX: 21; BORDER-BOTTOM: #5c8ad0 1px solid; BORDER-LEFT: #5c8ad0 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 8px; PADDING-RIGHT: 8px; BACKGROUND: #ffffff 0% 50%; FONT-SIZE: 0.7em; BORDER-TOP: #5c8ad0 1px solid; BORDER-RIGHT: #5c8ad0 1px solid; PADDING-TOP: 6px
+}
+.pagination {
+	TEXT-ALIGN: right; FONT-SIZE: 0.7em
+}
+DIV.note {
+	BORDER-BOTTOM: black 2px solid; BORDER-LEFT: black 2px solid; PADDING-BOTTOM: 5px; BACKGROUND-COLOR: #eeeeee; MARGIN: 10px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BORDER-TOP: black 2px solid; BORDER-RIGHT: black 2px solid; PADDING-TOP: 5px
+}
+DIV.warning {
+	BORDER-BOTTOM: black 2px solid; BORDER-LEFT: black 2px solid; PADDING-BOTTOM: 5px; BACKGROUND-COLOR: #ffff66; MARGIN: 10px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BORDER-TOP: black 2px solid; BORDER-RIGHT: black 2px solid; PADDING-TOP: 5px
+}
+.tableTable {
+	BORDER-COLLAPSE: collapse
+}
+.tableTable TD {
+	BORDER-BOTTOM: black 1px solid; BORDER-LEFT: black 1px solid; PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BORDER-TOP: black 1px solid; BORDER-RIGHT: black 1px solid; PADDING-TOP: 5px
+}
+.tableTable TH {
+	BORDER-BOTTOM: black 1px solid; BORDER-LEFT: black 1px solid; PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BORDER-TOP: black 1px solid; BORDER-RIGHT: black 1px solid; PADDING-TOP: 5px
+}
+#WLSearchBoxDiv {
+	TOP: 30px
+}
+INPUT.search_box {
+	BACKGROUND: none transparent scroll repeat 0% 0%
+}
+UL.tabbed {
+	LIST-STYLE: none none outside; PADDING-BOTTOM: 5px; MARGIN: 5px 0px 0px; MIN-HEIGHT: 18px; PADDING-LEFT: 5px; WIDTH: 280px; PADDING-RIGHT: 5px; BACKGROUND: #dce4f9 0px 0px; PADDING-TOP: 5px
+}
+UL.tabbed LI {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; WIDTH: 16px; PADDING-RIGHT: 2px; FLOAT: left; HEIGHT: 16px; VERTICAL-ALIGN: baseline; BORDER-TOP: 0px; CURSOR: hand; BORDER-RIGHT: 0px; PADDING-TOP: 2px
+}
+UL.tabbed LI.selected {
+	BACKGROUND-COLOR: #fff
+}
+.posts_container {
+	PADDING-BOTTOM: 5px; MIN-HEIGHT: 250px; PADDING-LEFT: 5px; WIDTH: 280px; PADDING-RIGHT: 5px; BACKGROUND: #dce4f9 0px 0px; FLOAT: left; CLEAR: left; PADDING-TOP: 5px
+}
+.posts_container .postgroup {
+	PADDING-BOTTOM: 5px; MIN-HEIGHT: 250px; PADDING-LEFT: 5px; WIDTH: auto; PADDING-RIGHT: 5px; DISPLAY: none; PADDING-TOP: 5px
+}
+.posts_container .selected.postgroup {
+	BACKGROUND-COLOR: #fff; DISPLAY: block
+}
+.icon_rss_header {
+	TEXT-DECORATION: none !important
+}
+.tabs_blogs .ms_bloggers_phil_haack {
+	BACKGROUND-POSITION: center -399px
+}
+.header_bottom_right {
+	Z-INDEX: -1
+}
+.welcome_nav_get_started_steps LI {
+	MARGIN: 0px 15px 0px 0px; MIN-HEIGHT: 150px; HEIGHT: auto !important
+}
+CODE.code_block {
+	FONT-SIZE: 1em
+}
+.list_paging LI {
+	CURSOR: pointer
+}
+.post_item .post_date_spotlight {
+	MARGIN: -0.4em 0px 0px; COLOR: #b2b4b8 !important; FONT-SIZE: 0.65em
+}

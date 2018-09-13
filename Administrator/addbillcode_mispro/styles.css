@@ -1,0 +1,132 @@
+body{margin: 0px 0px; padding: 0px 0px; font-family:tahoma,sans-serif;font-size: 14px;color: #000000;
+
+/*
+crollbar-shadow-color: white; 
+scrollbar-highlight-color: white;
+scrollbar-3dlight-color: #b62a79; 
+scrollbar-darkshadow-color: #b62a79; 
+scrollbar-track-color: #FFFFFF; 
+scrollbar-arrow-color: rgb(255,182,209)
+
+ /*text-decoration: line-through ;*/ /* background-color:#FFFFFF; */
+}
+
+p {font-family:tahoma,sans-serif;font-size: 13px;}
+th {font-family:tahoma,sans-serif;font-size: 13px; text-align:left}
+td {font-family: tahoma,sans-serif;font-size: 13px;}
+Select {font-family: tahoma,sans-serif;font-size: 13px;}
+input {font-family:tahoma,sans-serif;font-size: 13px;}
+textarea {font-family:tahoma,sans-serif;font-size: 13px;}
+tbody {font-family:tahoma,sans-serif;font-size: 13px; text-decoration: none}
+
+
+a:link {color: #0000FF; text-decoration: none}
+a:visited {color: #990099; text-decoration: none}
+a:active {color: #990099; text-decoration: underline}
+a:hover {color: #FF0000; text-decoration: underline}
+
+
+
+.pic {	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FILTER: progid:DXImageTransform.Microsoft.Shadow(color=#c0c0c0,direction=135, strength=8) 	   	progid:DXImageTransform.Microsoft.Alpha(opacity=80); BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px
+		}
+.Shadow {	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FILTER: progid:DXImageTransform.Microsoft.Shadow(color=#c0c0c0,direction=135, strength=8) 	   	progid:DXImageTransform.Microsoft.Alpha(opacity=80); BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px
+		}
+.Shadow2 {BORDER-TOP-WIDTH: 0px; 
+				 BORDER-LEFT-WIDTH: 1px ;
+				FILTER: progid:DXImageTransform.Microsoft.Shadow(color=#c0c0c0,direction=180, strength=8) progid:DXImageTransform.Microsoft.Alpha(opacity=80); 
+				BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px
+		}		
+.Shadow3{filter: progid:DXImageTransform.Microsoft.dropShadow (OffX=2, OffY=2, Color=#c0c0c0, Positive=true)};
+.Shadow4{filter: progid:DXImageTransform.Microsoft.Glow(true,color=#000000, strength=8)};
+
+
+
+.text_head36 {	font-family:  sans-serif, Tahoma; font-size: 36px; font-weight: bold;  color: #DC21DC }
+.text_head24 {	font-family:  Angsana New,sans-serif, Tahoma; font-size: 24px; font-weight: bold;  font-style:italic;color: #DC21DC }
+.text_head20 {	font-family:  Angsana New,sans-serif, Tahoma; font-size: 20px; font-weight: bold;  font-style:italic;color: #000000 }
+.text_head24_iso {	font-family: Tahoma,sans-serif; font-size: 18px; font-weight: bold;color: #c7387f }
+.text_head16_iso {	font-family: Tahoma,sans-serif; font-size: 16px; font-weight: bold;color: #c7387f }
+.text_head14_iso {	font-family: Tahoma,sans-serif; font-size: 14px; font-weight: bold;color: #c7387f }
+
+.text_head18 {	font-family:  Angsana New,sans-serif, Tahoma; font-size: 18px; font-weight: bold;  font-style:italic;color: #DC21DC }
+.text_headItalic24 {	font-family:Tahoma,sans-serif; font-size: 24px; font-weight: bold ; font-style:italic; color: #DC21DC }
+.text_Tahoma16 {	font-family:Tahoma,sans-serif; font-size: 16px; font-weight: bold ; text-decoration:none;line-height:24px}
+.text_Tahoma15 {	font-family:Tahoma,sans-serif; font-size: 15px; font-weight: bold ; text-decoration:none;line-height:23px}
+.text_Tahoma14 {	font-family:sans-serif, Tahoma; font-size: 14px; font-weight:normal ;line-height:24px}
+.text_Tahoma13 {	font-family:sans-serif, Tahoma; font-size: 13px; font-weight:normal ;line-height:22px}
+.text_normal {font-family:  sans-serif, Tahoma; font-size: 13px;color: #CA387F; font-weight:normal}
+
+.text_normal2 {font-family:  sans-serif, Tahoma; font-size: 13px;color: #FFFFFF; font-weight:bold}
+.text_normalBold {font-family:  sans-serif, Tahoma; font-size: 13px;color: #CA387F; font-weight: bold}
+.text_normalBold13 {font-family:  sans-serif, Tahoma; font-size: 13px;color: #C7397F; font-weight: bold}
+.text_normal_Bule {font-family:  sans-serif, Tahoma; font-size: 13px;color: #0000FF; font-weight:normal}
+.text_normal_Bule2 {font-family:  sans-serif, Tahoma; font-size: 13px;color: #0000FF; font-weight:bold}
+.text_boldBlack {font-family:  sans-serif, Tahoma; font-size: 13px;color: #000000; font-weight: bold}
+.text_normalBlack{font-family:  sans-serif, Tahoma; font-size: 13px;color: #000000; font-weight: normal}
+.table_head {
+	BORDER-RIGHT: #b62a79; BORDER-TOP: #b62a79 1px solid; FONT-WEIGHT: bold; BORDER-LEFT: #b62a79; COLOR: #FFFFFF; BORDER-BOTTOM: #b62a79 1px solid; BACKGROUND-COLOR: #e1b6d1
+}
+.table_head2 {
+	BORDER-RIGHT: #e1b6d1; BORDER-TOP: #e1b6d1 1px solid; FONT-WEIGHT: bold; BORDER-LEFT: #e1b6d1; COLOR: #FFFFFF; BORDER-BOTTOM: #e1b6d1 1px solid; BACKGROUND-COLOR: #b62a79
+}
+.Table_border_bottom_gray {	 BORDER-BOTTOM: #9E9E9E 1px solid}
+.Table_border_bottom_gray2 {	 border-bottom:dotted 1px #999}
+
+.Table_border_bottom_blue {	 BORDER-BOTTOM: #ecf1fb2 1px solid}
+.Table_border_bottom_violet {	 BORDER-BOTTOM: #B82B7A 1px solid}
+.Table_FormBorder_violet {
+	BORDER-RIGHT: #B82B7A 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #B82B7A 1px solid; PADDING-LEFT: 0px; 
+	PADDING-BOTTOM: 0px; BORDER-LEFT: #B82B7A 1px solid; PADDING-TOP: 0px; BORDER-BOTTOM: #B82B7A 1px solid
+}
+.Table_FormBorder_Blue {
+	BORDER-RIGHT: #81BEEB 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #81BEEB 1px solid; PADDING-LEFT: 0px; 
+	PADDING-BOTTOM: 0px; BORDER-LEFT: #81BEEB 1px solid; PADDING-TOP: 0px; BORDER-BOTTOM: #81BEEB 1px solid
+}
+.Table_FormBorder_gray {
+	BORDER-RIGHT: #9E9E9E 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #9E9E9E 1px solid; PADDING-LEFT: 0px; 
+	PADDING-BOTTOM: 0px; BORDER-LEFT: #9E9E9E 1px solid; PADDING-TOP: 0px; BORDER-BOTTOM: #9E9E9E 1px solid
+}
+
+.Table_Border_Buttom_CFCFCF{
+			BORDER-RIGHT:#CFCFCF 0px solid; PADDING-RIGHT: 0px; 
+			BORDER-TOP: #CFCFCF  0px solid; PADDING-TOP: 0px;
+			BORDER-LEFT: #CFCFCF  0px solid;PADDING-LEFT: 0px;  
+			BORDER-BOTTOM: #CFCFCF  1px  dotted ;PADDING-BOTTOM: 0px
+}	
+
+
+.FormBorder_fe9900{
+			BORDER-RIGHT:#fe9900 1px solid; PADDING-RIGHT: 0px; 
+			BORDER-TOP: #fe9900  1px solid; PADDING-TOP: 0px;
+			BORDER-LEFT: #fe9900  1px solid;PADDING-LEFT: 0px;  
+			BORDER-BOTTOM: #fe9900  1px solid ;PADDING-BOTTOM: 0px
+}	
+.FormBorder_F2F2F2{
+			BORDER-RIGHT:#F2F2F2 1px solid; PADDING-RIGHT: 0px; 
+			BORDER-TOP: #F2F2F2  1px solid; PADDING-TOP: 0px;
+			BORDER-LEFT: #F2F2F2  1px solid;PADDING-LEFT: 0px;  
+			BORDER-BOTTOM: #F2F2F2  1px solid ;PADDING-BOTTOM: 0px
+}	
+
+.FormBorder_CFCFCF{
+			BORDER-RIGHT:#CFCFCF 1px solid; PADDING-RIGHT: 0px; 
+			BORDER-TOP: #CFCFCF  1px solid; PADDING-TOP: 0px;
+			BORDER-LEFT: #CFCFCF  1px solid;PADDING-LEFT: 0px;  
+			BORDER-BOTTOM: #CFCFCF  1px solid ;PADDING-BOTTOM: 0px
+}	
+
+
+.GradientBlue0{
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FILTER: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#84CCFD, endColorStr=#FFFFFF, gradientType=0)
+}
+.GradientBlue1{
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FILTER: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#FFFFFF, endColorStr=#6487DB, gradientType=1)
+}
+.Gradient_violet{
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FILTER: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#991D65, endColorStr=#F0A3CF, gradientType=0)
+}
+
+
+.textbold {
+	font-weight: bold;
+}

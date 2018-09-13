@@ -1,0 +1,67 @@
+<link href="css/main.css" rel="stylesheet" type="text/css" />
+<table width="913" border="0" cellpadding="0" cellspacing="1" class="FormBorder">
+  <tr>
+    <td width="140" align="center" bgcolor="#0066FF" class="content_header">วันที่</td>
+    <td width="118" align="center" bgcolor="#0066FF" class="content_header">จำนวนเขต<br />
+    ที่สั่งซื้อ</td>
+    <td width="126" align="center" bgcolor="#0066FF" class="content_header">จำนวนออร์เดอร์<br />
+    ที่สั่งซื้อ</td>
+    <td width="205" align="center" bgcolor="#0066FF" class="content_header">จำนวน<br />
+    สอบถามประวัติการสั่งซื้อ</td>
+    <td width="165" align="center" bgcolor="#0066FF" class="content_header">จำนวน<br />
+      สอบถามข้อมูลสมาชิก</td>
+    <td width="159" align="center" bgcolor="#0066FF" class="content_header">จำนวนออร์เดอร์<br />
+      ที่ถูกดาวน์โหลด</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFE8FF">&nbsp;</td>
+    <td bgcolor="#FFE8FF">&nbsp;</td>
+    <td bgcolor="#FFE8FF">&nbsp;</td>
+    <td bgcolor="#FFE8FF">&nbsp;</td>
+    <td bgcolor="#FFE8FF">&nbsp;</td>
+    <td bgcolor="#FFE8FF">&nbsp;</td>
+  </tr>
+</table>
+<?php session_start();?>
+<?php 
+header('Content-type: text/html; charset=windows-874');
+include("../i_function_msg.php");
+require("../Connections/dsm_orders.php");
+include("i_convert.php"); 
+?>
+
+<?php
+$div= $_SESSION['div_code'];
+$nsm_code=$_SESSION['nsm_code'];
+$login_type = $_SESSION['login_type'];
+
+mysql_select_db($database_dsm_orders, $dsm_orders);
+mysql_query("SET NAMES 'tis620'");
+//mysql_query("SET NAMES 'utf8'");
+
+$query = "SELECT * FROM users Where  Status <> '' ";
+  
+if ($login_type=="DIV") {
+	$filter= " and  DIVCODE='$div'  ";
+}
+else if ($login_type=="NSM") {
+	$filter=" and   DIVCODE IN (select DIV_CODE from tbdiv where nsm =$nsm_code)";
+}
+else if ($login_type="Admin") {
+	//$filter=" where div_code <> '' ";
+}
+
+$query.= $filter;
+
+if ($_POST['txtdist']!="") {
+	$query.=" AND District ='". $_POST['txtdist'] ."'";
+}
+
+$query.=" ORDER BY DISTRICT ASC";
+
+
+
+$users = mysql_query($query, $dsm_orders) or die(mysql_error());
+//$row_order = mysql_fetch_assoc($order);
+?>
+

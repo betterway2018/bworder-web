@@ -1,0 +1,96 @@
+
+<!-- End ImageReady Slices -->
+
+<script language="JavaScript1.2">
+function popupNews  (strDest,strWidth,strHeight,scoll,rez) {
+/*
+status  The status bar at the bottom of the window. 
+toolbar  The standard browser toolbar, with buttons such as Back and Forward. 
+location  The Location entry field where you enter the URL. 
+menubar  The menu bar of the window 
+directories  The standard browser directory buttons, such as What's New and What's Cool 
+resizable Allow/Disallow the user to resize the window. 
+scrollbars  Enable the scrollbars if the document is bigger than the window 
+height Specifies the height of the window in pixels. (example: height='350') 
+width  Specifies the width of the window in pixels. 
+*/
+newWin = window.open(strDest,"popup","location=0,toolbar=0,scrollbars="+scoll+",resizable="+rez+",width=" + strWidth + ",height=" + strHeight);
+}
+</script>
+
+<div id="slidecontenr" style="position:absolute; width:88px; height:280; top: 150px; left:900px; background-color:none; border:0px solid yellow; padding:0px">
+  <TABLE id=AutoNumber1 style="BORDER-COLLAPSE: collapse" cellSpacing=0
+
+cellPadding=0 width=137  border=0>
+    <!--DWLayoutTable-->
+    
+    <TR>
+      <TD colspan="2" align="center" vAlign=top>
+      <!--<a href="javascript:popupNews('../article/article3.asp',800,500,1,1)"></a> -->
+      
+      <a href="../Activity/activity5.asp"><img src="../Activity/images/webMpay.gif" width="137" height="310" border="0"></a>      </TD>
+    </TR>
+    <TR>
+      <TD width=70 align="center" vAlign=top><!--DWLayoutEmptyCell-->&nbsp;</TD>
+      <TD width=67 align="center" ><!--DWLayoutEmptyCell-->&nbsp;</TD>
+    </TR>
+  </TABLE>
+
+
+</div>
+
+
+
+
+
+<script language="JavaScript1.2">
+<!--
+
+var sdragapproved=false
+var zco,xco,yco
+function moveslidecontenr(){
+if (event.button==1&&sdragapproved){
+zco.style.pixelLeft=stempvar1+event.clientX-xco
+zco.style.pixelTop=stempvar2+event.clientY-yco
+sleftpos=document.all.slidecontenr.style.pixelLeft-document.body.scrollLeft
+stoppos=document.all.slidecontenr.style.pixelTop-document.body.scrollTop
+return false
+}
+}
+function dragslidecontenr(){
+if (!document.all)
+return
+if (event.srcElement.id=="scontentbar"){
+sdragapproved=true
+zco=slidecontenr
+stempvar1=zco.style.pixelLeft
+stempvar2=zco.style.pixelTop
+xco=event.clientX
+yco=event.clientY
+document.onmousemove=moveslidecontenr
+}
+}
+document.onmousedown=dragslidecontenr
+document.onmouseup=new Function("sdragapproved=false")
+///////////////configue the X Y
+//var w=845
+var w=1024
+var h=100
+//h= document.body.scrollHeight   
+//////////////end configue the X Y
+w+=document.body.scrollLeft
+//h+=document.body.scrollTop
+h+=document.body.scrollTop
+var sleftpos=w
+var stoppos=h
+slidecontenr.style.left=w
+slidecontenr.style.bottom=h
+function sstaticize(){
+w2=document.body.scrollLeft+sleftpos
+h2=document.body.scrollTop+stoppos
+slidecontenr.style.left=w2
+slidecontenr.style.top=h2
+}
+window.onscroll=sstaticize
+//-->
+</script>

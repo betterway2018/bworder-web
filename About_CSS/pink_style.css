@@ -1,0 +1,86 @@
+/* CSS Document */
+p
+{
+	background-color:#FF99CC;
+	/*margin-top:50px; */
+}
+p.margin
+{
+	margin-top:100px;
+	margin-bottom:100px;
+	margin-right:50px;
+	margin-left:100px;
+}
+/*input button กำหนด Button  ใช้กับ Browser ไม่ได้*/
+input.btn {
+  color:#050;
+  font: bold 84% 'trebuchet ms',helvetica,sans-serif;
+  background-color:#fed;
+  border: 1px solid;
+  border-color: #696 #363 #363 #696;
+}
+input.btnhov {
+  border-color: #c63 #930 #930 #c63;
+}
+
+input.formbutton{
+	cursor			:pointer;
+	border			:outset 1px #F6F;
+	background	:#999;
+	color				:#8C1764;
+	font-weight	:bold;
+	font-family		:Tahoma, Geneva, sans-serif;
+	padding			: 10px 40px;
+	background	:url(formbg_p.gif) repeat-x left top;
+}
+input.formbuttonhov{
+	cursor			:pointer;
+	border			:outset 1px #999;
+	background	:#999;
+	color				:#8C1764;
+	font-weight	:bold;
+	font-family		:Tahoma, Geneva, sans-serif;
+	padding			: 10px 40px;
+	background	:url(formbg.gif) repeat-x left top;
+}
+a:link 				{background-color:#B2FF99;}    /* unvisited link */
+a:visited 			{background-color:#FFFF85;} /* visited link */
+a:hover 				{background-color:#FF704D;}   /* mouse over link */
+a:active 				{background-color:#FF704D;}  /* selected link */
+
+/*Credits: Dynamic Drive CSS Library */
+/*URL: http://www.dynamicdrive.com/style/ */
+a.boldbuttons{
+background: transparent url('roundedge-gray-left.gif') no-repeat top left;
+display: block;
+float: left;
+font: bold 13px Arial; /* Change 13px as desired */
+line-height: 22px; /* This value + 4px + 4px (top and bottom padding of SPAN) must equal height of button background (default is 30px) */
+height: 30px; /* Height of button background height */
+padding-left: 8px; /* Width of left menu image */
+text-decoration: none;
+}
+a:link.boldbuttons, a:visited.boldbuttons, a:hover.boldbuttons, a:active.boldbuttons{
+color: white; /*button text color*/
+}
+a.boldbuttons span{
+background: transparent url('roundedge-gray-right.gif') no-repeat top right;
+display: block;
+padding: 4px 10px 4px 2px; /*Set 10px to be equal or greater than'padding-left' value above*/
+}
+a:hover.boldbuttons{ /* Hover state CSS */
+text-decoration: underline;
+}
+.buttonwrapper{ /* Container you can use to surround a CSS button to clear float */
+overflow: hidden; /*See: http://www.quirksmode.org/css/clearing.html */
+width: 100%;
+}
+
+
+
+
+
+   
+
+
+

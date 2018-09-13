@@ -1,0 +1,5 @@
+<%
+Const title = "Mistine Administrator"
+
+
+%>
