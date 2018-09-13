@@ -1,0 +1,120 @@
+<?php
+session_start(); 
+require_once('check_login.php');
+require_once('include/i_config.php'); 
+require_once('Connections/bwc_orders.php');
+
+//$CurCamp =$_GET['CurCamp'];
+$CurCamp=$_SESSION["CurCamp"];
+$rep_seq=$_SESSION["rep_seq"];
+
+//echo  $rep_seq."DDDD";
+
+ 
+
+
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title><?php  echo $title?></title>
+<link href="css/main.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+//เก็บสถิติกูเกิ้ล
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-34860989-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+
+</head>
+
+<body onload="MM_preloadImages('images/a02.gif','images/b02.gif','images/c02.gif','images/g02.gif','images/e02.gif','images/h02.gif','images/d01.gif','images/i02.gif','images/ss02.gif','images/New_Button/G02.gif','images/New_Button/J02.gif','images/New_Button/I02.gif','images/New_Button/D02.gif','images/New_Button/B02.gif','images/New_Button/F02.gif')">
+<table width="800" border="0" align="center" cellpadding="0" cellspacing="0" >
+  <?php require_once('include/i_header_border.php'); ?>
+  <?php require_once('include/i_header.php'); ?>
+  <tr>
+    <td height="480" align="left" valign="top" class="Sheet_Boder" style="padding:2px"><br />
+	   <br />
+      <br />
+      <br />
+      
+      <table width="0" border="0" align="center" cellpadding="5" cellspacing="5">
+        <tr>
+          <td align="center"><a href="order_check.php?rep_seq=<?=$rep_seq?>" target="_parent" onmouseover="MM_swapImage('Image1','','images/New_Button/A02.gif',1)" onmouseout="MM_swapImgRestore()"><img src="images/New_Button/A01.gif" alt="สั่งซื้อสินค้าด่วน" name="Image1" width="144" height="119" border="0" id="Image1" /></a>
+		  <input name="CurCamp " type="hidden" value="<?=$CurCamp ?>" />		  </td>
+          <td align="center"><a href="order_summary.php" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image_Query','','images/New_Button/D02.gif',1)" title="รายการสั่งซื้อที่ยังไม่ถูกดาวน์โหลด&#013;ท่านสมาชิกสามารถเช็ครายละเอียดเปลี่ยนแปลงแก้ไขเพิ่มเติม คลิกที่นี่ "><img src="images/New_Button/D01.gif" alt="รายการสั่งซื้อที่ยังไม่ถูกดาวน์โหลด&#013;ท่านสมาชิกสามารถเช็ครายละเอียดเปลี่ยนแปลงแก้ไขเพิ่มเติม คลิกที่นี่ " name="Image_Query" width="144" height="119" border="0" id="Image_Query" /></a></td>
+          <td align="center"><a href="bwo_view_ar.php" target="_parent" onmouseover="MM_swapImage('Image81','','images/New_Button/C02.gif',1)" onmouseout="MM_swapImgRestore()" title="&#8226;  ยอดค้างชำระ&#013;&#8226;  วันที่จัดส่งสินค้า&#013;&#8226;  วันที่สั่งสินค้า&#013;&#8226;  คะแนนสะสมเบทเตอร์เวย์พอยท์ รีวอร์ด&#013;&#8226;  ยอดเงินปันผลปัจจุบัน"><img src="images/New_Button/C01.gif" alt="&#8226;  ยอดค้างชำระ&#013;&#8226;  วันที่จัดส่งสินค้า&#013;&#8226;  วันที่สั่งสินค้า&#013;&#8226;  คะแนนสะสมเบทเตอร์เวย์พอยท์ รีวอร์ด&#013;&#8226;  ยอดเงินปันผลปัจจุบัน" name="Image81" width="144" height="119" border="0" id="Image81" /></a></td>
+          <td align="center"><a href="catalogue.php" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image22','','images/New_Button/B02.gif',1)"><img src="images/New_Button/B01.gif" alt="แคตตาล็อค มิสทิน ฟาริส ฟรายเดย์" name="Image22" width="144" height="119" border="0" id="Image22" /></a></td>
+          <td align="center"><a href="plusplan.php" target="_parent" onmouseover="MM_swapImage('Image24','','images/New_Button/J02.gif',1)" onmouseout="MM_swapImgRestore()"><img src="images/New_Button/J01.gif" alt="ใบปลิวพิเศษ" name="Image24" width="144" height="119" border="0" id="Image24" /></a></td>
+        </tr>
+        <tr>
+        <td align="center"><a href="member_profile.php" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image21','','images/New_Button/E02.gif',1)"><img src="images/New_Button/E01.gif" alt="แก้ไขข้อมูลส่วนตัว" name="Image21" width="144" height="119" border="0" id="Image21" /></a></td>
+          <td align="center"><input name="rep_seq " type="hidden" value="<?=$rep_seq?>" />
+          <a href="bwo_profile.php?rep_seq=<?=$rep_seq?>" target="_parent" onmouseover="MM_swapImage('Image31','','images/New_Button/F02.gif',1)" onmouseout="MM_swapImgRestore()" title="รายการสั่งซื้อที่ดาวน์โหลดแล้ว &#013;ท่านสมาชิกสามารถดูรายละเอียดต่างๆ ได้จากประวัติการสั่งซื้อ&#013;รอบจำหน่าย, วันที่พิมพ์ใบกำกับภาษี, เลขที่ใบกำกับภาษี, มูลค่าผลิตภัณฑ์สุทธิ คลิกที่นี่"><img src="images/New_Button/F01.gif" alt="รายการสั่งซื้อที่ดาวน์โหลดแล้ว &#013;ท่านสมาชิกสามารถดูรายละเอียดต่างๆ ได้จากประวัติการสั่งซื้อ&#013;รอบจำหน่าย, วันที่พิมพ์ใบกำกับภาษี, เลขที่ใบกำกับภาษี, มูลค่าผลิตภัณฑ์สุทธิ คลิกที่นี่" name="Image31" width="144" height="119" border="0" id="Image31" /></a>		  </td>
+          <td align="center"><a href="bw_Order_Manual.pdf" target="_blank" onmouseover="MM_swapImage('Image71','','images/New_Button/G02.gif',1)" onmouseout="MM_swapImgRestore()"><img src="images/New_Button/G01.gif" alt="ขั้นตอนการสั่งซื้อสินค้า" name="Image71" width="144" height="119" border="0" id="Image71" /></a></td>
+          <td align="center"><a href="contact_us.php" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image_contact','','images/New_Button/H02-new.png',1)"><img src="images/New_Button/H01-new.png" alt="ติดต่อสอบถาม E-mail Call Center" name="Image_contact" width="144" height="119" border="0" id="Image_contact" /></a></td>
+          <td align="center"><a href="http://www.mistine.co.th/pointrewards/index.php" target="_blank" onmouseover="MM_swapImage('Image23','','images/New_Button/I02.gif',1)" onmouseout="MM_swapImgRestore()"><img src="images/New_Button/I01.gif" alt="เบทเตอร์เวย์พอยท์ รีวอร์ด" name="Image23" width="144" height="119" border="0" id="Image23" /></a></td>
+        </tr>
+        <tr>
+          <td align="center">&nbsp;</td>
+          <td align="center">&nbsp;</td>
+          <td align="center">&nbsp;</td>
+          <td align="center"></td>
+          <td align="center"></td>
+        </tr>
+        <!--<tr>
+          <td align="center"><a href="promote_all.php" target="_parent" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>&nbsp;</td>
+          <td align="center"><a href="news_vip.php" target="_parent" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>&nbsp;</td>
+          <td align="center"></td>
+          <td align="center">&nbsp;</td>
+          <td align="center"></td>
+        </tr>-->
+      </table>
+      <br />
+    </td>
+  </tr>
+  <?php require_once('include/i_footer_border.php'); ?>
+</table>
+<?php require_once('include/i_footer.php'); ?>
+</body>
+</html>
+<?php
+	$dist=$_SESSION['dist'];
+	$mslno=$_SESSION['mslno'];         
+	include("i_msg_box.php"); 
+	
+
+?>

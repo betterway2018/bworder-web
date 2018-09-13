@@ -1,0 +1,218 @@
+<?php require_once('Connections/bwc_orders.php'); ?>
+<?php 
+echo "กำลังบันทึกข้อมูลการสั่งซื้อสินค้า กรุณารอสักครู่ ...";
+echo "<br>";
+
+
+require("check_login.php");
+
+$dist=$_POST['dist'];
+$mslno=$_POST['mslno'];
+$chkdgt=$_POST['chkdgt'];
+$rep_name=$_POST['rep_name'];
+$campaign=$_POST['campaign'];	
+$totalItems = $_POST['TotalItems'];
+$curcamp=$_POST['curcamp'];
+$orddate=date('Ymd');
+$ordtime=date('Hi00');
+
+$website_id=$_SESSION['website'];
+if($website_id=="") {
+	$website_id ="0";
+}
+
+
+
+//Binding Data 
+
+$arr_billcode = array("");
+$arr_qty = array("");	
+$arr_billdesc=array("");
+$arr_price =array("");
+$arr_amount=array("");
+$totalAmount=0;
+$items=0;
+for ($i=1;$i<=$totalItems;$i++){
+	if ($_POST['txtcode_'.$i]!="") {
+
+		array_push($arr_billcode ,$_POST['txtcode_'.$i] );
+		array_push($arr_qty ,$_POST['txtqty_'.$i] );
+		array_push($arr_billdesc ,$_POST['txtdesc_'.$i] );
+		array_push($arr_price ,$_POST['txtprice_'.$i] );		
+
+/*	   if (is_numeric($_POST['txtprice_'.$i])) {
+		   		array_push($arr_price ,$_POST['txtprice_'.$i] );		
+	   }
+	   else {
+		   		array_push($arr_price ,"0" );		
+	   }
+		*/
+		if (is_numeric($_POST['txtamount_'.$i])) {
+			array_push($arr_amount ,$_POST['txtamount_'.$i] );				
+		}
+		else {
+			array_push($arr_amount ,"0" );				
+		}
+		
+		if (is_numeric($_POST['txtamount_'.$i])){
+			$totalAmount= $totalAmount + $_POST['txtamount_'.$i];
+		}
+			
+		
+		$items=$items+1;
+//		echo "billcode:".$_POST['txtcode_'.$i]."<br>";
+	}
+}
+
+
+
+if ($dist=="" || $mslno=="" || $chkdgt=="") {
+	echo "<meta http-equiv='refresh' content='0;URL=order_summary.php'>";
+	exit;
+}
+
+if ($campaign=="") {
+	echo "<meta http-equiv='refresh' content='0;URL=order_summary.php'>";
+	exit;
+}
+
+mysql_select_db($database_bwc_orders, $bwc_orders);
+//mysql_query("SET NAMES 'utf8'");
+mysql_query("SET NAMES 'tis620'");
+$sql ="Select  CAMP,DIST,BILLDATE,SHIPDATE,DLVDATE  From  TBL015 Where CAMP =$campaign  AND DIST='$dist'";
+$tbl015 = mysql_query($sql, $bwc_orders) or die(mysql_error());
+$row_tbl015 = mysql_fetch_assoc($tbl015);
+$totalRows_tbl015 = mysql_num_rows($tbl015);			
+if ($totalRows_tbl015 == 0) {
+	$BillDate = "0";
+	$ShipDate ="0";
+	$DlvDate ="0";
+	$DwnDate ="0";
+}
+else {
+	$BillDate =$row_tbl015["BILLDATE"];
+	$ShipDate = $row_tbl015["SHIPDATE"];
+	$DlvDate = $row_tbl015["DLVDATE"];		
+	$DwnDate = $row_tbl015["BILLDATE"];
+
+	if (intval($DwnDate) <= intval(date('Ymd'))) {
+	
+		if (date("l",strtotime("+1 day"))=="Saturday") {
+			$date = date("Ymd", strtotime("+3 day"));
+		}
+		else if (date("l",strtotime("+1 day"))=="Sunday") {
+		 	$date = date("Ymd", strtotime("+2 day"));
+		}
+		else {
+				$date = date("Ymd", strtotime("+1 day"));
+		}
+		
+		$DwnDate=$date;		
+	}
+			
+}
+
+
+//Generate  ORDER NO	
+	
+	$sql ="SELECT MAX(ORDER_NO) as MAXNO FROM ORDER_HEADER WHERE ORDCAMP =$campaign";
+	$order_no = mysql_query($sql, $bwc_orders) or die(mysql_error());
+	$row_order_no = mysql_fetch_assoc($order_no);
+	$totalRows_order_no = mysql_num_rows($order_no);		
+	
+    if ($totalRows_order_no ==0) {
+		$no =0;
+	}
+	else {
+		if (!isset($row_order_no['MAXNO']) || $row_order_no['MAXNO']=="") {
+			$no=0;
+		}
+		else {
+			$no =$row_order_no['MAXNO'];
+		}
+	}
+	$no=$no+1;
+	
+	
+
+
+//INSERT HEADER
+		
+		mysql_query("BEGIN");
+		$sql = "INSERT INTO ORDER_HEADER (ORDER_NO,ORDCAMP,ORDDATE,ORDTIME,CURCAMP,DIST,MSLNO,CHKDGT,NAME,
+					ITEMS,TOTAL_AMOUNT,BILLDATE,SHIPDATE,DLVDATE,DWNDATE,DWNFLAG,
+					MAIL_CONFIRM,UPDDATE,UPDTIME,DP_DOWNLOAD,WEBSITE_ID) VALUES (
+					$no,$campaign,$orddate,'$ordtime',$curcamp,'$dist',$mslno,$chkdgt,'$rep_name',
+					$items,$totalAmount,$BillDate,$ShipDate,$DlvDate,$DwnDate,'N',
+					'N',$orddate,'$ordtime','',$website_id)";
+		//echo "$sql<br>";
+		
+		$result = mysql_query($sql,$bwc_orders);
+		if ($result) {
+		//	echo "$sql<br>\n";
+		//	echo  "save done" ;
+		//	echo "<br> count = ".count($arr_billcode);
+		//	echo "<br>";
+			for($i=1;$i<count($arr_billcode);$i++) {
+				//echo "billcode :$arr_billcode[$i]<br>";
+				$query ="INSERT INTO ORDER_DETAIL (
+							  ORDER_NO,ORDCAMP,ORDDATE,ORDTIME,CURCAMP,DIST,MSLNO,CHKDGT,
+							  LISTNO,BILLCODE,BILLDESC,QTY,PRICE,AMOUNT,
+							  BILLFLAG,DWNFLAG,EXPFLAG,FLAG1 ) VALUES ( 
+							  $no,$campaign,$orddate,'$ordtime',$curcamp,'$dist',$mslno,$chkdgt,
+							  $i,'$arr_billcode[$i]','$arr_billdesc[$i]',$arr_qty[$i],$arr_price[$i],$arr_amount[$i],
+							  '0','N','N','')";
+				//echo "$query <br>";
+				 $result_line=mysql_query($query,$bwc_orders);
+				 if (!$result_line) {
+   				     mysql_query("ROLLBACK");
+		 			die('Error: 2' . mysql_error());
+					exit;
+				 }
+    		 }
+			mysql_query("COMMIT");
+			
+
+			//echo  "<script type='text/javascript'>
+			//		  alert ('ขอขอบคุณที่ท่านสมาชิกสั่งซื้อสินค้าผ่านเวบ BWORDER ระบบได้บันทึกข้อมูลเรียบร้อยแล้ว กรุณากดปุ่ม OK');</ script>";
+			
+			// Send E-mail 
+			/*
+			$message = $detail;
+			$message="เรียน Webmaster <br> ";
+			$message .="      คุณ".$rep_name ." รหัสสมาชิก $dist-$mslno-$chkdgt  ";
+			$message .="email : $email  หมายเลขโทรศัพท์ : $phone ";
+			$message .="<br>";
+			$message .="ได้แสดงความคิดเห็นหรือติดต่อ/สอบถามข้อมูลผ่านทางเว็บไซต์ ";
+			$message .="http://".$_SERVER['HTTP_HOST'];
+			$message .="<br>เมื่อวันที่  ". date('d/m/Y') ." ".date('H:i:00');
+			$message .="  มีรายละเอียดดังนี้ค่ะ ...<br>";
+			$message .="Subject : ". $subject ;
+			$message .="<br>";
+			$message .="Detail    : ". $detail ;
+			include("send_mail.php");
+			
+			
+			*/
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+   		    echo "<meta http-equiv='refresh' content='0;URL=order_summary.php'>";
+			exit;
+		}
+		else {
+			mysql_query("ROLLBACK");
+			die('Error: 3' . mysql_error());
+			exit;
+		}
+?>
+
+

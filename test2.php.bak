@@ -1,0 +1,7 @@
+<?php
+ini_set("SMTP","localhost");
+if(mail("trii_systems@hotmail.com","TEST MAIL FROM PHP SCRIPT","JUST TEST","From: contact@netdesignhost.com"))
+echo "Sent";
+else echo "Not Sent";
+?>
+ 

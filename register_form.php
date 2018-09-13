@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-874" />
+<link href="css/main.css" rel="stylesheet" type="text/css" />
+<title>สมัครสมาชิกทางอินเตอร์เน็ต</title>
+<script src="js/jscRiProfile.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+<!--
+function setNextFocus(tar_obj) { //v3.0
+	    if (event.keyCode == 13){
+            var obj=document.getElementById(tar_obj);
+            if (obj){
+                obj.focus();
+            }
+        }
+}
+
+//ให้รับเฉพาะตัวเลข
+function checknumber() {
+	  key=event.keyCode
+	 if (key<48  ||  key>57 )  {
+				event.returnValue = false;
+	 }
+}
+
+
+
+//-->
+</script>
+<style type="text/css">
+
+.text {
+	color:#F30;
+	font-size:0.9em;
+	font-weight:bold;
+}
+h1, h2,h3, h4 {
+	color:#FFF;
+	font-weight:bold;
+	text-align:left;
+}
+.text_9 {
+	font-size: 14px;
+	text-decoration:underline;
+	color:#900;
+}
+/*.input {
+	height : 20px; 
+	font-size : 16px; 
+	background : #FFF; 
+	border : 2px #F09 outset; 
+	margin-top : 8px; 
+}*/
+</style>
+
+
+</head>
+
+<body>
+<center>
+<form action="register_submit.php" method="post" name="form_login"  id="form_login" >
+  <fieldset style="width:600px">
+    <table width="582" border="0" cellspacing="1" cellpadding="3" >
+      <tr>
+        <td width="179" align="right">NAME-SURNAME / ชื่อ-นามสกุล : </td>
+        <td width="374" align="left"><input name="txtname" type="text" id="txtname" size="48"   style="width:100%" onkeydown="setNextFocus('txtaddress'); "/></td>
+        <td width="7" align="left">*</td>
+      </tr>
+      <tr>
+        <td align="right" valign="top">ADDRESS/ ที่อยู่ปัจจุบัน :</td>
+        <td align="left"><input name="txtaddress" type="text" id="txtaddress" value="" size="45"   style="width:100%" onkeydown="setNextFocus('txttumbol');" /></td>
+        <td align="left">&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="right">Thambon/ ตำบล-แขวง :</td>
+        <td align="left"><input name="txttumbol" type="text" id="txttumbol" size="48"   style="width:100%" onkeydown="setNextFocus('txtamphur');"/></td>
+        <td align="left">&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="right">Amphor/ อำเภอ-เขต :</td>
+        <td align="left"><input name="txtamphur" type="text" id="txtamphur" size="48"  style="width:100%" onkeydown="setNextFocus('txtprovince');"/></td>
+        <td align="left">&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="right">Province /จังหวัด :</td>
+        <td align="left"><input name="txtprovince" type="text" id="txtprovince" size="48"  style="width:100%" onkeydown="setNextFocus('txtpostcode');" /></td>
+        <td align="left">&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="right">Code /รหัสไปรษณีย์ :</td>
+        <td align="left"><input name="txtpostcode" type="text" id="txtpostcode" size="10" maxlength="5"  onkeydown="setNextFocus('txtphone');" /></td>
+        <td align="left">&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="right">Telephone/ เบอร์โทรศัพท์บ้าน</td>
+        <td align="left"><input name="txtphone" type="text" id="txtphone" size="15" maxlength="9" onblur="checkPhoneNo(this,9);" />
+        <span class="text">ใส่เบอร์โทรศัพท์บ้านที่ขึ้นต้นด้วย เลข 0 ค่ะ และ</span> 
+        </br>
+          <span class="text">กรุณา ใส่ตัวเลข 9 ตัวติดกันโดย<span class="text_9">ไม่ต้องใส่</span>สัญลักษณ์ (-) คั่น</span></td>
+        <td align="left">*</td>
+      </tr>
+      <tr>
+        <td align="right">Mobile/ เบอร์โทรศัพท์มือถือ</td>
+        <td align="left"><input name="txtmobile" type="text" id="txtmobile" size="15" maxlength="10" onblur="checkMobileNo(this,10);" /> 
+        <span class="text">ใส่เบอร์โทรศัพท์มือถือที่ขึ้นต้นด้วย เลข 0 ค่ะ และ</span> 
+        </br><span class="text">กรุณา ใส่ตัวเลข 10 ตัวติดกันโดย<span class="text_9">ไม่ต้องใส่</span>สัญลักษณ์ (-) คั่น</span></td>
+        <td align="left">*</td>
+      </tr>
+      <tr>
+        <td align="right">Fax/ แฟกซ์ :</td>
+        <td align="left"><input name="txtfax" type="text" id="txtfax" size="48" onkeydown="setNextFocus('txtemail');"  /></td>
+        <td align="left">&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="right">EMAIL / อีเมล์ :</td>
+        <td align="left"><input name="txtemail" type="text" id="txtemail" size="48"  onkeydown="setNextFocus('txtaddress2');" /></td>
+        <td align="left">&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="right" valign="top">สถานที่ติดต่อได้สะดวก:</td>
+        <td align="left"><textarea name="txtaddress2" id="txtaddress2" cols="45" rows="3"></textarea></td>
+        <td align="left" valign="top">*</td>
+      </tr>
+      <tr valign="top">
+        <td align="right" valign="top">เวลาที่ติดต่อได้สะดวก:</td>
+        <td align="left" valign="top"><textarea name="txtaddress3" id="txtaddress3" cols="45" rows="2"></textarea></td>
+        <td align="left" valign="top">*</td>
+      </tr>
+      <tr>
+        <td  align="right">&nbsp;</td>
+        <td colspan="2" align="left"><input name="Reset" type="reset"  id="button" value="ยกเลิก" class="formbutton"/>
+          <input name="Button" type="button"  id="Submit" value="บันทึกส่งข้อมูล" class="formbutton" onclick="return check();" />
+          <input name="Website" type="hidden" id="Website" value="<?php echo $_GET['website']; ?>" /></td>
+      </tr>
+    </table>
+  </fieldset>
+  <script type="text/javascript">
+				function IsNumeric(strString)
+					   //  check for valid numeric strings	
+					   {
+					   var strValidChars = "0123456789.-";
+					   var strChar;
+					   var blnResult = true;
+					
+					   if (strString.length == 0) return false;
+					
+					   //  test strString consists of valid characters listed above
+					   for (i = 0; i < strString.length && blnResult == true; i++)
+						  {
+						  strChar = strString.charAt(i);
+						  if (strValidChars.indexOf(strChar) == -1)
+							 {
+							 blnResult = false;
+							 }
+						  }
+					   return blnResult;
+				}
+
+<!--
+
+				// Email Validation. Written by PerlScriptsJavaScripts.com
+				
+				function check_email(e) {
+					ok = "1234567890qwertyuiop[]asdfghjklzxcvbnm.@-_QWERTYUIOPASDFGHJKLZXCVBNM";
+				
+					for(i=0; i < e.length ;i++){
+						if(ok.indexOf(e.charAt(i))<0){ 
+						return (false);
+						}	
+					} 
+				
+					if (document.images) {
+						re = /(@.*@)|(\.\.)|(^\.)|(^@)|(@$)|(\.$)|(@\.)/;
+						re_two = /^.+\@(\[?)[a-zA-Z0-9\-\.]+\.([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+						if (!e.match(re) && e.match(re_two)) {
+							return (-1);		
+						} 
+				
+					}
+				
+				}
+				
+				// -->
+
+//=========================================
+				function check() {
+					
+		
+					if (document.form_login.txtname.value==""){
+						alert("กรุณากรอกชื่อของคุณด้วยค่ะ !!");
+						document.form_login.txtname.focus();
+						return false;
+					}
+		else if(document.form_login.txtaddress.value=="") {
+						alert("กรุณากรอกที่อยู่ของคุณด้วยค่ะ !!");
+						document.form_login.txtaddress.focus();
+						return false;
+					}
+					else if(document.form_login.txttumbol.value=="") {
+						alert("กรุณากรอกที่อยู่ตำบล/แขวงด้วยค่ะ !!");
+						document.form_login.txttumbol.focus();
+						return false;
+					}
+					else if(document.form_login.txtamphur.value=="") {
+						alert("กรุณากรอกที่อยู่อำเภอ/เขตด้วยค่ะ !!");
+						document.form_login.txtamphur.focus();
+						return false;
+					}
+					else if(document.form_login.txtprovince.value=="") {
+						alert("กรุณากรอกที่อยู่จังหวัดด้วยค่ะ !!");
+						document.form_login.txtprovince.focus();
+						return false;
+					}
+					else if(document.form_login.txtpostcode.value=="") {
+						alert("กรุณากรอกที่อยู่รหัสไปรษณีย์ด้วยค่ะ !!");
+						document.form_login.txtpostcode.focus();
+						return false;
+					}					
+					else if (!check_email(document.form_login.txtemail.value)){
+						alert("กรุณากรอกอีเมลล์ให้ถูกต้องค่ะ !!");
+						document.form_login.txtemail.focus();
+						return false;
+					}		
+					else if(document.form_login.txtphone.value==""&&document.form_login.txtmobile.value=="") {
+						alert("กรุณากรอกหมายเลขโทรศัพท์ของคุณด้วยค่ะ !!");
+						document.form_login.txtphone.focus();
+						return false;
+					}				
+			
+
+
+					
+					else {
+						//return true;
+						document.getElementById('form_login').submit();
+						return false;
+					}
+					
+				}
+		</script>
+</form>
+</center>
+</body>
+</html>

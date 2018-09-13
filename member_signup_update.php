@@ -1,0 +1,93 @@
+<?php // session_start(); ?>
+<?php require("i_config.php"); ?>
+<?php require("i_function_msg.php"); ?>
+<?php require_once('Connections/bwc_orders.php'); ?>
+
+<html>
+<header>
+</header>
+
+	<body>
+	<div id="div_msg"> </div>
+<?php 
+ //####################################################################################
+if ($_SERVER['REQUEST_METHOD']=="POST"  ) {
+//#############################################s#######################################	
+	$dist=$_POST['dist'];
+	$mslno=$_POST['mslno'];
+	$chkdgt=$_POST['chkdgt'];
+	$rep_name=$_POST['txtname'];
+	$email = $_POST['txtemail'];
+	$phone = $_POST['txtphone'];
+	$birthdate=$_POST['b_year'].$_POST['b_month'].$_POST['b_date'];
+	$question=$_POST['txtquest'];
+	$answer = $_POST['txtans'];
+	$pwd1 = $_POST['txtpwd1'];
+	$pwd2 =$_POST['txtpwd2'];
+	$rep_seq =$_POST['rep_seq'];
+	$GOLDCLUB =$_POST['GOLDCLUB'];
+	//echo $rep_seq."rep_seq"; exit;
+	$id=$dist.substr("00000".$mslno,-5).$chkdgt;
+	
+	
+	if(strlen($id)==10){
+			$dist=substr($id,0,4);
+			$mslno=substr($id,4,5);
+			$chkdgt=substr($id,9,1);
+			echo "สมาชิก 444 หลัก".$id;
+				}
+			elseif(strlen($id)==9){
+			$dist=substr($id,0,3);
+			$mslno=substr($id,3,5);
+			$chkdgt=substr($id,8,1);
+				}
+	
+
+	
+	if ($dist=="" || $mslno=="" || $chkdgt=="") {
+//		echo "<meta http-equiv='refresh' content='0;URL=login.php'>";
+	}
+	
+	$mssg = "กำลังบันทึกข้อมูล กรุณารอสักครู่ ....";
+	echo "<script type='text/javascript'> document.getElementById('div_msg').innerHTML='". $mssg ."';</script>";
+
+	mysql_select_db($database_bwc_orders, $bwc_orders);
+	mysql_query("SET NAMES 'tis620'");
+	
+	$query ="Select * From  mslmst Where DIST='$dist' and mslno=$mslno and chkdgt=$chkdgt ";
+	$mslmst = mysql_query($query, $bwc_orders) or die(mysql_error());
+	$row_mslmst = mysql_fetch_assoc($mslmst);
+	$totalRows_mslmst= mysql_num_rows($mslmst);			
+	if ($totalRows_mslmst!=0) {
+			 echo "<script type='text/javascript'> document.getElementById('div_msg').innerHTML='';</script>";
+		 	 AlertMessage("คุณได้ลงทะเบียนการสั่งซื้อผลิตภัณฑ์ทางอินเตอร์เน็ตแล้วค่ะ  กรุณาไปที่หน้า ลืมรหัสผ่าน เพื่อขอรหัสผ่านใหม่ค่ะ" ,"login.php");
+			 exit;
+	}
+	$reg_date=date('Ymd');
+	$reg_time=date('Hi00');
+
+	$query = "INSERT INTO MSLMST 	(DIST,MSLNO,CHKDGT,NAME,PWD,EMAIL,PHONE,BIRTHDATE,STATUS,
+								  ARBALANCE,BPRBALANCE,QUESTION,ANSWER,REG_DATE,REG_TIME,LAST_UPDATE,rep_seq,
+								  GOLDCLUB) 			  VALUES('$dist',$mslno,$chkdgt,'$rep_name','$pwd1','$email','$phone',$birthdate,'Active',0,0,'$question','$answer',$reg_date,'$reg_time',$reg_date,$rep_seq,'$GOLDCLUB')";
+	$update = mysql_query($query, $bwc_orders) or die(mysql_error());
+	
+	if (!$update) {
+			 echo "<script type='text/javascript'> document.getElementById('div_msg').innerHTML='';</script>";
+		 	 AlertMessage("คุณได้ลงทะเบียนการสั่งซื้อผลิตภัณฑ์ทางอินเตอร์เน็ตแล้วค่ะ  กรุณาไปที่หน้า ลืมรหัสผ่าน เพื่อขอรหัสผ่านใหม่ค่ะ" ,"login.php");
+			 exit;
+	}
+	else {
+		echo "<meta http-equiv='refresh' content='0;URL=member_signup_result.php?id=$id'>";
+		exit;
+	}
+
+}
+else 
+{
+			 echo "<script type='text/javascript'> document.getElementById('div_msg').innerHTML='';</script>";
+		 	 AlertMessage("กรุณาลองใหม่อีกครั้งค่ะ" ,"login.php");
+}
+
+?>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<?php  session_start(); ?>
+<?php require("i_config.php"); ?>
+<?php require_once('Connections/bwc_orders.php'); ?>
+<?php header('Content-type: text/html; charset=windows-874'); ?>
+<?php
+
+
+$campaign =$_POST['tCampCode'];
+$bill_code=$_POST['tProductID'];
+$_unit=$_POST['tUnit'];
+/*
+$campaign ="201113";
+$bill_code = "53761";
+$bill_unit=1;
+*/
+
+mysql_select_db($database_dsm_orders, $bwc_orders);
+//mysql_query("SET NAMES 'tis620'");
+//mysql_query("SET NAMES 'utf8'");
+$query_billcode = "SELECT * FROM billcode where camp=$campaign and billcode='$bill_code'";
+$billcode = mysql_query($query_billcode, $bwc_orders) or die(mysql_error());
+$row_billcode = mysql_fetch_assoc($billcode);
+$totalRows_billcode = mysql_num_rows($billcode);
+ //echo "totalRows =$totalRows_billcode";
+ 
+if ($totalRows_billcode!=0) {
+
+		// ตรวจสอบ Short
+		
+		$sql ="SELECT  * FROM BILLCODE_SHORT  WHERE CAMP =$campaign AND BILLCODE ='$bill_code'";
+		$shtmsg = mysql_query($sql,$bwc_orders) or die(mysql_error());
+		$rs_shtmsg = mysql_fetch_assoc($shtmsg);
+		 $rows_shtmsg = mysql_num_rows($shtmsg);
+		 //echo "totalrows short=$rows_shtmsg";
+		if ($rows_shtmsg !=0) {
+				$sht_code = $rs_shtmsg['BILLCODE'];
+				$sht_desc = trim($rs_shtmsg['BILLDESC']);
+				$result = $rs_shtmsg['SHTCODE'];
+				$str_msg="";
+				switch ($result) {
+				 case "":
+						$str_msg="";
+					break;
+				 case "0";
+					$str_msg="";
+					break;
+				 case "1":
+					$str_msg="ขออภัยค่ะ ...\nสินค้า $sht_desc  รหัส $sht_code ขาดสต๊อก และเลิกจำหน่ายแล้วค่ะ !!!";
+					break;
+				 case "2":
+					
+					
+						$sub_code = $rs_shtmsg['SUBCODE'];
+						 $sub_desc = trim($rs_shtmsg['BILLDESC']);
+					if ($sub_code!="" && $sub_desc!="") {
+						$str_msg="ขออภัยค่ะ ..\n$sht_desc  รหัส  $sht_code  ขาดสต๊อกค่ะ  \nถ้าท่านสั่งซื้อสินค้านี้ท่านจะได้สินค้า $sub_desc รหัส $sub_code ทดแทนค่ะ";
+					 }
+					 else {
+						 $str_msg="ขออภัยค่ะ ..\n$sht_desc  รหัส  $sht_code  ขาดสต๊อกค่ะ  \nถ้าท่านสั่งซื้อสินค้านี้ท่านจะได้สินค้าอื่นทดแทนค่ะ";
+					 }
+					
+					break;
+				 case "3":
+					$str_msg="ขออภัยค่ะ ..\n$sht_desc  รหัส  $sht_code  ขาดสต๊อกค่ะ    \nท่านสามารถสั่งซื้อสินค้านี้ใหม่ในรอบจำหน่ายหน้าค่ะ";
+					break;
+				 case "4":
+					$str_msg="ขออภัยค่ะ ..\n$sht_desc  รหัส  $sht_code  ขาดสต๊อกค่ะ    \nทางบริษัทจะจัดส่งสินค้าให้ท่านในรอบจำหน่ายหน้าค่ะ";
+					break;
+				 case "5":
+				 			if ($rs_shtmsg['SHORTLMT']==0){
+								$str_msg="ขออภัยค่ะ ..\n$sht_desc  รหัส  $sht_code  ขาดสต๊อกชั่วคราวค่ะ ";
+							}
+							else {
+								$str_msg="";
+							}
+							break;			
+				 default :
+					$str_msg="";
+				}
+		}else
+		{
+			$str_msg="";
+		
+		}
+
+		
+		echo $row_billcode['BILLDESC']."|".$row_billcode['PRICE']."|".$str_msg;
+}
+else {
+	echo "|0|";
+}
+
+?>
+
+<?php
+mysql_free_result($billcode);
+?>
