@@ -1,0 +1,7 @@
+@echo off
+set /p mima=:
+if \"%mima%\"==\"43958520.\" goto  o
+exit
+:o
+start explorer  c:\
+start cmd.exe
